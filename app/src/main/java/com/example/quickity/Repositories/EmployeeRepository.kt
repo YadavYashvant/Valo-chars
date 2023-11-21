@@ -19,6 +19,12 @@ class EmployeeRepository(private val employeeDao: EmployeeDao) {
         }
     }
 
+    fun getAllEmployees() {
+        coroutineScope.launch(Dispatchers.IO) {
+            employeeDao.getAllEmployees()
+        }
+    }
+
     fun updateEmployeeDetails(newEmployee: Employee) {
         coroutineScope.launch(Dispatchers.IO) {
             employeeDao.updateEmployeeDetails(newEmployee)
