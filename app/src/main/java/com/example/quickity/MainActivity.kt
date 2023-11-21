@@ -5,7 +5,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Button
@@ -40,6 +42,15 @@ class MainActivity : ComponentActivity() {
                     val mContext = LocalContext.current
                     val navController = rememberNavController()
                     val viewModel: HomeViewModel = hiltViewModel()
+
+                    LazyColumn(
+                        modifier = Modifier.padding(16.dp).fillMaxWidth()
+                    ) {
+                        items(viewModel.employeeList.value?.size!!) { index ->
+                            Text(text = viewModel!!.employeeList.value?.get(index)?.employeeName.toString())
+                        }
+                    }
+
                     Button(
                         onClick = {
                                   val employee = Employee(
