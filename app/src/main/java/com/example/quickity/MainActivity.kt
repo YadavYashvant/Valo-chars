@@ -36,6 +36,11 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
+
+                    Text(text = "Welcome to quickity",
+                        modifier = Modifier.padding(16.dp).fillMaxWidth(),
+                        style = MaterialTheme.typography.headlineMedium
+                    )
                     /*val mContext = LocalContext.current
                     val navController = rememberNavController()
                     val viewModel: HomeViewModel = hiltViewModel()
