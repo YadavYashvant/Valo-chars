@@ -22,24 +22,21 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.rememberNavController
-import com.example.quickity.Viewmodels.HomeViewModel
 import com.example.quickity.models.Employee
-import com.example.quickity.ui.screens.addEmployeeInDB
 import com.example.quickity.ui.theme.QuickityTheme
 import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
+//@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             QuickityTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    val mContext = LocalContext.current
+                    /*val mContext = LocalContext.current
                     val navController = rememberNavController()
                     val viewModel: HomeViewModel = hiltViewModel()
 
@@ -64,7 +61,7 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier.padding(32.dp)
                     ) {
                         Icon(imageVector = Icons.Filled.Add, contentDescription = null)
-                    }
+                    }*/
                 }
             }
         }

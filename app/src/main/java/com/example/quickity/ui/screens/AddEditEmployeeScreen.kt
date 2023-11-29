@@ -1,5 +1,6 @@
 package com.example.quickity.ui.screens
 
+/*
 import android.content.Context
 import androidx.navigation.NavController
 import com.example.quickity.Viewmodels.HomeViewModel
@@ -13,4 +14,4 @@ import com.example.quickity.models.Employee
     ) {
         homeViewModel.addEmployee(employee)
         navController.popBackStack()
-    }
+    }*/

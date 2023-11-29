@@ -8,6 +8,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 
+/*
 @HiltViewModel
 class HomeViewModel @Inject constructor(private val employeeRepository: EmployeeRepository) : ViewModel() {
 
@@ -29,4 +30,4 @@ class HomeViewModel @Inject constructor(private val employeeRepository: Employee
         getAllEmployees()
     }
 
-}
+}*/
