@@ -25,6 +25,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.quickity.models.Employee
+import com.example.quickity.ui.screens.HomeScreen
 import com.example.quickity.ui.theme.QuickityTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -49,7 +50,13 @@ class MainActivity : ComponentActivity() {
 
                     NavHost(navController = navController, startDestination = "home") {
                         composable("home") {
-                            HomeScreen(navController)
+                            HomeScreen(navController = navController)
+                        }
+                        composable("bills") {
+                            Text(text = "Bills")
+                        }
+                        composable("settings") {
+                            Text(text = "Settings")
                         }
 
                     }
