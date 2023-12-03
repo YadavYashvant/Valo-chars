@@ -85,7 +85,7 @@ fun HolderScreen() {
     val fabAnimationProgress by animateFloatAsState(
         targetValue = if (isMenuExtended.value) 1f else 0f,
         animationSpec = tween(
-            durationMillis = 1000,
+            durationMillis = 700,
             easing = LinearEasing
         )
     )
