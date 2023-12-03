@@ -25,6 +25,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.quickity.models.Employee
+import com.example.quickity.ui.screens.HolderScreen
 import com.example.quickity.ui.screens.HomeScreen
 import com.example.quickity.ui.theme.QuickityTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -39,7 +40,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Text(text = "Welcome to quickity",
+                    HolderScreen()
+                    /*Text(text = "Welcome to quickity",
                         modifier = Modifier
                             .padding(16.dp)
                             .fillMaxWidth(),
@@ -58,8 +60,7 @@ class MainActivity : ComponentActivity() {
                         composable("settings") {
                             Text(text = "Settings")
                         }
-
-                    }
+                    }*/
                     /*val mContext = LocalContext.current
                     val navController = rememberNavController()
                     val viewModel: HomeViewModel = hiltViewModel()
