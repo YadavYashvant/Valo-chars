@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -40,87 +41,101 @@ import com.example.quickity.R
 fun HomeScreen(
     navController: NavController
 ) {
-    val scrollState = rememberScrollState()
+    //val scrollState = rememberScrollState()
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .verticalScroll(scrollState)
-            .padding(vertical = 16.dp)
+            //.verticalScroll(scrollState)
     ) {
-        Text(text = "Quickity",fontWeight = FontWeight.Bold, fontSize = 36.sp, modifier = Modifier.padding(16.dp).align(Alignment.CenterHorizontally))
-        Card(
-            onClick = { /*TODO*/ },
+        LazyColumn{
+            item {
+                Text(text = "Quickity",fontWeight = FontWeight.Bold, fontSize = 36.sp, modifier = Modifier
+                    .padding(16.dp)
+                    .align(Alignment.CenterHorizontally))
+            }
+            items(10){
+                HomeScreenCard()
+            }
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun HomeScreenCard() {
+    Card(
+        onClick = { /*TODO*/ },
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(20.dp)
+    ) {
+        Column(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(20.dp)
         ) {
-            Column(
+            Text(
+                //fontFamily = spacefamily,
+                text = "Codev", fontSize = 20.sp,
+                fontWeight = FontWeight.Bold,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .padding(8.dp)
+                    .align(Alignment.CenterHorizontally)
+            )
+            Text(
+
+                text ="A collaborative space for developers " +
+                        "to find and list their undergoing projects " +
+                        "and ideas to be worked on and seek for team " +
+                        "members with requirements.",
+                //fontFamily = spacefamily,
+                fontSize = 14.sp,
+                fontWeight = FontWeight.Normal,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .padding(8.dp)
+                    .align(Alignment.CenterHorizontally)
+
+            )
+            Image(
+                painter = painterResource(id = R.drawable.phone_shopping),
+                contentDescription = "project image",
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(20.dp)
+                    .padding(vertical = 16.dp)
+                    .align(Alignment.CenterHorizontally)
+            )
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(10.dp)
+                    .align(Alignment.Start)
+                    .clip(shape = MaterialTheme.shapes.extraLarge)
+                    .background(color = Color.White)
+                /*.background(color = Color.LightGray)*/
+                ,
+                horizontalArrangement = Arrangement.SpaceBetween
+
             ) {
-                Text(
-                    //fontFamily = spacefamily,
-                    text = "Codev", fontSize = 20.sp,
-                    fontWeight = FontWeight.Bold,
-                    textAlign = TextAlign.Center,
+                Button(
+                    onClick = { /*TODO*/ },
                     modifier = Modifier
-                        .padding(8.dp)
-                        .align(Alignment.CenterHorizontally)
-                )
-                Text(
-
-                    text ="A collaborative space for developers " +
-                            "to find and list their undergoing projects " +
-                            "and ideas to be worked on and seek for team " +
-                            "members with requirements.",
-                    //fontFamily = spacefamily,
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.Normal,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier
-                        .padding(8.dp)
-                        .align(Alignment.CenterHorizontally)
-
-                )
-                Image(
-                    painter = painterResource(id = R.drawable.phone_shopping),
-                    contentDescription = "project image",
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(vertical = 16.dp)
-                        .align(Alignment.CenterHorizontally)
-                )
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(10.dp)
-                        .align(Alignment.Start)
-                        .clip(shape = MaterialTheme.shapes.extraLarge)
-                        .background(color = Color.White)
-                    /*.background(color = Color.LightGray)*/
-                    ,
-                    horizontalArrangement = Arrangement.SpaceBetween
-
+                        .padding(vertical = 12.dp, horizontal = 16.dp)
                 ) {
-                    Button(
-                        onClick = { /*TODO*/ },
-                        modifier = Modifier
-                            .padding(vertical = 12.dp, horizontal = 16.dp)
-                    ) {
-                        Text(text = "View Project", fontWeight = FontWeight.Bold)
-                    }
+                    Text(text = "View Project", fontWeight = FontWeight.Bold)
+                }
 
-                    OutlinedButton(
-                        onClick = { /*TODO*/ },
-                        modifier = Modifier
-                            .padding(vertical = 12.dp, horizontal = 16.dp)
-                    ) {
-                        Icon(imageVector = Icons.Filled.Info, contentDescription = "info", Modifier.padding(end = 5.dp))
-                        Text(text = "Inquire" /*fontWeight = FontWeight.Bold*/)
-                    }
+                OutlinedButton(
+                    onClick = { /*TODO*/ },
+                    modifier = Modifier
+                        .padding(vertical = 12.dp, horizontal = 16.dp)
+                ) {
+                    Icon(imageVector = Icons.Filled.Info, contentDescription = "info", Modifier.padding(end = 5.dp))
+                    Text(text = "Inquire" /*fontWeight = FontWeight.Bold*/)
                 }
             }
         }
     }
+
 }
