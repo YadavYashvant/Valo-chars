@@ -65,7 +65,7 @@ fun HomeScreen(
                 Text(text = "Quickity", fontStyle = FontStyle.Italic, fontWeight = FontWeight.Bold, fontSize = 32.sp, modifier = Modifier
                     .padding(start = 160.dp)
                     .align(Alignment.CenterHorizontally),
-                    color = Color.Blue)
+                    color = Color(0xFF1E90FF))
                 Box {
                     AnimatedPreloader(modifier = Modifier
                         .size(400.dp)
@@ -81,7 +81,7 @@ fun HomeScreen(
 }
 
 @Composable
-fun AnimatedPreloader(modifier: Modifier = Modifier) {
+private fun AnimatedPreloader(modifier: Modifier = Modifier) {
     val preloaderLottieComposition by rememberLottieComposition(
         LottieCompositionSpec.RawRes(
             R.raw.quickity_anim1
