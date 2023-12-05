@@ -26,7 +26,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.quickity.animations.EnterAnimation
 import com.example.quickity.ui.BottomNavigation
+import com.example.quickity.ui.screens.BillScreen
 import com.example.quickity.ui.screens.HomeScreen
+import com.example.quickity.ui.screens.ScannerScreen
 import com.example.quickity.ui.theme.DEFAULT_PADDING
 import com.example.quickity.ui.theme.QuickityTheme
 
@@ -61,12 +63,12 @@ class MainActivity : ComponentActivity() {
                             }
                             composable("Scan") {
                                 EnterAnimation {
-                                    Text(text = "Scan the QR code")
+                                    ScannerScreen(navController = navController)
                                 }
                             }
                             composable("Bills") {
                                 EnterAnimation {
-                                    Text(text = "Bills")
+                                    BillScreen(navController = navController)
                                 }
                             }
                         }
