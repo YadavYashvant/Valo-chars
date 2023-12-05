@@ -31,12 +31,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.quickity.R
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ProjectScreen() {
+fun HomeScreen(
+    navController: NavController
+) {
     val scrollState = rememberScrollState()
     Column(
         modifier = Modifier
@@ -44,7 +47,7 @@ fun ProjectScreen() {
             .verticalScroll(scrollState)
             .padding(vertical = 16.dp)
     ) {
-        Text(text = "Your Projects",fontWeight = FontWeight.Bold, fontSize = 36.sp, modifier = Modifier.padding(16.dp).align(Alignment.CenterHorizontally))
+        Text(text = "Quickity",fontWeight = FontWeight.Bold, fontSize = 36.sp, modifier = Modifier.padding(16.dp).align(Alignment.CenterHorizontally))
         Card(
             onClick = { /*TODO*/ },
             modifier = Modifier
@@ -81,7 +84,7 @@ fun ProjectScreen() {
 
                 )
                 Image(
-                    painter = painterResource(id = R.drawable.concept),
+                    painter = painterResource(id = R.drawable.phone_shopping),
                     contentDescription = "project image",
                     modifier = Modifier
                         .fillMaxWidth()
@@ -105,7 +108,7 @@ fun ProjectScreen() {
                         modifier = Modifier
                             .padding(vertical = 12.dp, horizontal = 16.dp)
                     ) {
-                        Text(text = "View Project", fontFamily = spacefamily, fontWeight = FontWeight.Bold)
+                        Text(text = "View Project", fontWeight = FontWeight.Bold)
                     }
 
                     OutlinedButton(
@@ -114,7 +117,7 @@ fun ProjectScreen() {
                             .padding(vertical = 12.dp, horizontal = 16.dp)
                     ) {
                         Icon(imageVector = Icons.Filled.Info, contentDescription = "info", Modifier.padding(end = 5.dp))
-                        Text(text = "Inquire", fontFamily = spacefamily, /*fontWeight = FontWeight.Bold*/)
+                        Text(text = "Inquire" /*fontWeight = FontWeight.Bold*/)
                     }
                 }
             }
