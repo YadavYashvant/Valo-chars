@@ -51,6 +51,7 @@ fun HomeScreen(
             item {
                 Text(text = "Quickity",fontWeight = FontWeight.Bold, fontSize = 36.sp, modifier = Modifier
                     .padding(16.dp)
+                    .padding(start = 32.dp)
                     .align(Alignment.CenterHorizontally))
             }
             items(10){
@@ -76,7 +77,7 @@ fun HomeScreenCard() {
         ) {
             Text(
                 //fontFamily = spacefamily,
-                text = "Codev", fontSize = 20.sp,
+                text = "Products", fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
@@ -85,10 +86,9 @@ fun HomeScreenCard() {
             )
             Text(
 
-                text ="A collaborative space for developers " +
-                        "to find and list their undergoing projects " +
-                        "and ideas to be worked on and seek for team " +
-                        "members with requirements.",
+                text ="Quickity is a mobile application that allows you to scan QR codes and pay for products, and is " +
+                        "a smarter solution to overcome hassle in shopping malls."
+                        +"This card is just for testing purposes.",
                 //fontFamily = spacefamily,
                 fontSize = 14.sp,
                 fontWeight = FontWeight.Normal,
@@ -123,7 +123,7 @@ fun HomeScreenCard() {
                     modifier = Modifier
                         .padding(vertical = 12.dp, horizontal = 16.dp)
                 ) {
-                    Text(text = "View Project", fontWeight = FontWeight.Bold)
+                    Text(text = "Buy Product", fontWeight = FontWeight.Bold)
                 }
 
                 OutlinedButton(
