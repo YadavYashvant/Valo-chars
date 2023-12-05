@@ -1,4 +1,4 @@
-package com.example.quickity.Daos
+package com.example.quickity.dao
 
 /*
 import androidx.room.Dao

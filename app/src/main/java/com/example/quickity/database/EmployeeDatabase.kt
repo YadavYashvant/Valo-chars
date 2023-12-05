@@ -1,4 +1,4 @@
-package com.example.quickity.Databases
+package com.example.quickity.database
 /*
 
 import android.content.Context

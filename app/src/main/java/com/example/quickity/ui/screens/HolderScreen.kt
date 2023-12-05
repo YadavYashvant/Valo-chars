@@ -1,5 +1,5 @@
 package com.example.quickity.ui.screens
-
+/*
 import android.graphics.ColorMatrix
 import android.graphics.ColorMatrixColorFilter
 import android.graphics.RenderEffect
@@ -25,6 +25,7 @@ import androidx.compose.material.FloatingActionButtonDefaults
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.DateRange
@@ -49,6 +50,9 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.example.quickity.R
 import com.example.quickity.ui.theme.DEFAULT_PADDING
 import com.example.quickity.utils.times
@@ -81,13 +85,26 @@ private fun getRenderEffect(): RenderEffect {
 @Composable
 fun HolderScreen() {
     val isMenuExtended = remember { mutableStateOf(false) }
+    val navController = rememberNavController()
+
+    NavHost(navController = navController, startDestination = "home") {
+        composable("home") {
+            HomeScreen(navController = navController)
+        }
+        composable("bills") {
+            Text(text = "Bills")
+        }
+        composable("settings") {
+            Text(text = "Settings")
+        }
+    }
 
     val fabAnimationProgress by animateFloatAsState(
         targetValue = if (isMenuExtended.value) 1f else 0f,
         animationSpec = tween(
             durationMillis = 700,
             easing = LinearEasing
-        )
+        ), label = ""
     )
 
     val clickAnimationProgress by animateFloatAsState(
@@ -95,7 +112,7 @@ fun HolderScreen() {
         animationSpec = tween(
             durationMillis = 400,
             easing = LinearEasing
-        )
+        ), label = ""
     )
 
     val renderEffect = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
@@ -176,7 +193,9 @@ fun CustomBottomNavigation() {
             .padding(horizontal = 40.dp)
     ) {
         listOf(Icons.Filled.DateRange, Icons.Filled.Person).map { image ->
-            IconButton(onClick = { }) {
+            IconButton(onClick = {
+
+            }) {
                 Icon(imageVector = image, contentDescription = null, tint = Color.White)
             }
         }
@@ -270,4 +289,4 @@ fun AnimatedFab(
             )
         }
     }
-}
+}*/

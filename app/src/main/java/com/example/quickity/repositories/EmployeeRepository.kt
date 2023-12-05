@@ -1,4 +1,4 @@
-package com.example.quickity.Repositories
+package com.example.quickity.repositories
 
 /*
 import androidx.lifecycle.MutableLiveData

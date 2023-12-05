@@ -1,7 +1,4 @@
-package com.example.quickity.Viewmodels
-
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
+package com.example.quickity.viewmodels
 
 
 /*
