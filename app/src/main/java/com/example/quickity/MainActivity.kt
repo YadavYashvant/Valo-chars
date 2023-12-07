@@ -19,6 +19,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -57,6 +58,16 @@ class MainActivity : ComponentActivity() {
 
                     Scaffold(
                         modifier = Modifier.fillMaxSize(),
+                        topBar = { TopAppBar(
+                            title = { Text(text = "Quickity") },
+                            navigationIcon = {
+                                Text(
+                                    text = "Quickity",
+                                    modifier = Modifier.padding(start = DEFAULT_PADDING.dp),
+                                    style = MaterialTheme.typography.headlineMedium
+                                )
+                            },
+                        ) },
                         bottomBar = {
                             BottomNavigation(navController)
                         }
