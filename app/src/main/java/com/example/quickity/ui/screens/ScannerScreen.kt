@@ -86,6 +86,7 @@ fun ScannerScreen(
             .fillMaxHeight()
             .fillMaxWidth()
             .padding(horizontal = 32.dp)
+            .padding(top = 32.dp),
     ) {
 
 
@@ -147,7 +148,7 @@ fun ScannerScreen(
         }
 
         AnimatedPreloaderScan(modifier = Modifier
-            .size(350.dp)
+            .size(300.dp)
             .padding(16.dp)
             .padding(top = 32.dp)
         )
