@@ -49,7 +49,7 @@ class QrCodeAnalyzer(
             }
         }
     }
-
+    //anaylze function ends here
     private fun ByteBuffer.toByteArray(): ByteArray {
         rewind()
         return ByteArray(remaining()).also {
