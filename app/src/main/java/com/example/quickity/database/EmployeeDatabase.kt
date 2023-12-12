@@ -1,6 +1,6 @@
 package com.example.quickity.database
 /*
-
+//This contains an instance of the database
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
