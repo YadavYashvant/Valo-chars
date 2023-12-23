@@ -198,7 +198,6 @@ class MainActivity : ComponentActivity() {
                             BottomNavigation(navController)
                         }
                     ) {
-
                         NavHost(navController = navController, startDestination = "Home") {
                             composable("Home") {
                                 EnterAnimation {
