@@ -88,9 +88,6 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-
-
-
                     val navController = rememberNavController()
                     var mOpenMenu by remember { mutableStateOf(false) }
                     val mContext = LocalContext.current
