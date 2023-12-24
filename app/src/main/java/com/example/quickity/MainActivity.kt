@@ -116,7 +116,9 @@ class MainActivity : ComponentActivity() {
                                     DropdownMenu(
                                         expanded = mOpenMenu,
                                         onDismissRequest = { mOpenMenu = false },
-                                        modifier = Modifier.clip(RoundedCornerShape(40.dp)).wrapContentWidth()
+                                        modifier = Modifier
+                                            .clip(RoundedCornerShape(40.dp))
+                                            .wrapContentWidth()
                                     ) {
                                         // Creating dropdown menu item, on click
                                         // would create a Toast message
@@ -223,6 +225,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
 /*
 @Composable
 fun FallingObjectsGame() {
