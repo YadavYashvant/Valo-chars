@@ -1,7 +1,12 @@
 package com.example.quickity.ui.screens
 
+import android.content.ActivityNotFoundException
+import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.util.Size
+import android.widget.Button
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -12,15 +17,22 @@ import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -28,6 +40,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
@@ -42,132 +55,91 @@ import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
-import com.example.quickity.QrCodeAnalyzer
 import com.example.quickity.R
+import com.example.quickity.ui.screens.dialogs.PermissionRequestDialog
+import com.google.accompanist.systemuicontroller.SystemUiController
+import java.util.jar.Manifest
 
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ScannerScreen(
-    navController: NavController
+    navController: NavController,
+    useSystemUiController: Boolean = true,
+    urlText:String,
+    onUrlTextUpdate: (String) -> Unit
 ) {
-
-    var code by remember {
-        mutableStateOf("")
-    }
-
-
-
+    var statusText by remember { mutableStateOf("") }
     val context = LocalContext.current
-    val lifecycleOwner = LocalLifecycleOwner.current
-    val cameraProviderFuture = remember {
-        ProcessCameraProvider.getInstance(context)
-    }
 
-    var hasCamPermission by remember {
-        mutableStateOf(
-            ContextCompat.checkSelfPermission(
-                context,
-                android.Manifest.permission.CAMERA
-            ) == PackageManager.PERMISSION_GRANTED
-        )
-    }
-    val launcher = rememberLauncherForActivityResult(
-        contract = ActivityResultContracts.RequestPermission(),
-        onResult = { granted ->
-            hasCamPermission = granted
-        }
+    PermissionRequestDialog(
+        permission = android.Manifest.permission.CAMERA,
+        onResult = { isGranted ->
+            statusText = if (isGranted) {
+                "Scan QR code now!"
+            } else {
+                "No camera permission!"
+            }
+        },
     )
-    LaunchedEffect(key1 = true) {
-        launcher.launch(android.Manifest.permission.CAMERA)
-    }
 
     Column(
         modifier = Modifier
-            .fillMaxHeight()
-            .fillMaxWidth()
-            .padding(horizontal = 32.dp)
-            .padding(top = 32.dp),
+            .fillMaxSize()
+            .padding(horizontal = 10.dp)
+            .verticalScroll(rememberScrollState())
+        ,
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        Text(text=statusText, fontWeight = FontWeight.SemiBold, fontSize = 30.sp)
 
-
-
-        if (hasCamPermission) {
-
-            Card(
-                modifier = Modifier.fillMaxWidth().height(400.dp)
-            ) {
-                AndroidView(
-                    factory = { context ->
-                        val previewView = PreviewView(context)
-                        val preview = Preview.Builder().build()
-                        val selector = CameraSelector.Builder()
-                            .requireLensFacing(CameraSelector.LENS_FACING_BACK)
-                            .build()
-                        preview.setSurfaceProvider(previewView.surfaceProvider)
-                        val imageAnalysis = ImageAnalysis.Builder()
-                            .setTargetResolution(
-                                Size(
-                                    previewView.width,
-                                    previewView.height
-                                )
-                            )
-                            .setBackpressureStrategy(STRATEGY_KEEP_ONLY_LATEST)
-                            .build()
-                        imageAnalysis.setAnalyzer(
-                            ContextCompat.getMainExecutor(context),
-                            QrCodeAnalyzer { result ->
-                                code = result
-                            }
-                        )
-                        try {
-                            cameraProviderFuture.get().bindToLifecycle(
-                                lifecycleOwner,
-                                selector,
-                                preview,
-                                imageAnalysis
-                            )
-                        } catch (e: Exception) {
-                            e.printStackTrace()
-                        }
-                        previewView
-                    },
-                    modifier = Modifier.weight(1f)
-                )
-            }
-
-
-
-            Text(
-                text = code,
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(32.dp)
-            )
+        Spacer(modifier = Modifier.height(5.dp))
+        CameraPreview { url ->
+            onUrlTextUpdate(url)
         }
-
-        AnimatedPreloaderScan(modifier = Modifier
-            .size(300.dp)
-            .padding(16.dp)
-            .padding(top = 32.dp)
+        OutlinedTextField(
+            modifier = Modifier.fillMaxWidth(),
+            value = urlText,
+            onValueChange = {},
+            label = {Text("Detected URL")},
+            readOnly = true,
         )
 
+        Spacer(modifier = Modifier.height(5.dp))
+        Button(
+            modifier = Modifier.fillMaxWidth(),
+            onClick = {
+                launchUrl(context, urlText)
+            }
+        ) {
+            Text(text="Launch", fontWeight = FontWeight.SemiBold, fontSize = 30.sp)
+        }
     }
 }
 
-    /*Box(
-        modifier = androidx.compose.ui.Modifier.padding(16.dp),
-        contentAlignment = androidx.compose.ui.Alignment.Center,
 
-    ) {
-        //Text(text = "Scan the QR code", modifier = androidx.compose.ui.Modifier.align(androidx.compose.ui.Alignment.Center), fontSize = 24.sp)
-        AnimatedPreloaderScan(modifier = Modifier
-            .size(500.dp)
-            .padding(16.dp)
-        )
-    }*/
+private fun launchUrl(context: Context, urlText: String) {
+    val uri: Uri = Uri.parse(urlText)
 
+    val intent = Intent(Intent.ACTION_VIEW, uri).apply {
+        setPackage("com.android.chrome")
+    }
+
+    try {
+        context.startActivity(intent)
+
+    } catch (e: ActivityNotFoundException) {
+        intent.setPackage(null)
+
+        try {
+            context.startActivity(intent)
+
+        } catch (e: ActivityNotFoundException) {
+
+        }
+    }
+}
 
 @Composable
 fun AnimatedPreloaderScan(modifier: Modifier = Modifier) {

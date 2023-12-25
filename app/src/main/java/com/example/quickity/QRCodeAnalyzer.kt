@@ -1,59 +1,50 @@
-package com.example.quickity
+package vtsen.hashnode.dev.qrcodescanner
 
-import android.graphics.ImageFormat
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageProxy
 import com.google.zxing.*
 import com.google.zxing.common.HybridBinarizer
 import java.nio.ByteBuffer
 
-class QrCodeAnalyzer(
-    private val onQrCodeScanned: (String) -> Unit
-): ImageAnalysis.Analyzer {
-
-    private val supportedImageFormats = listOf(
-        ImageFormat.YUV_420_888,
-        ImageFormat.YUV_422_888,
-        ImageFormat.YUV_444_888,
-    )
+class QRCodeAnalyzer(
+    private val urlCallback: (String) -> Unit
+) : ImageAnalysis.Analyzer  {
 
     override fun analyze(image: ImageProxy) {
-        if(image.format in supportedImageFormats) {
-            val bytes = image.planes.first().buffer.toByteArray()
-            val source = PlanarYUVLuminanceSource(
-                bytes,
-                image.width,
-                image.height,
-                0,
-                0,
-                image.width,
-                image.height,
-                false
-            )
-            val binaryBmp = BinaryBitmap(HybridBinarizer(source))
-            try {
-                val result = MultiFormatReader().apply {
-                    setHints(
-                        mapOf(
-                            DecodeHintType.POSSIBLE_FORMATS to arrayListOf(
-                                BarcodeFormat.QR_CODE
-                            )
-                        )
-                    )
-                }.decode(binaryBmp)
-                onQrCodeScanned(result.text)
-            } catch(e: Exception) {
-                e.printStackTrace()
-            } finally {
-                image.close()
-            }
+        val bytes = image.planes.first().buffer.toByteArray()
+
+        val source = PlanarYUVLuminanceSource(
+            bytes,
+            image.width,
+            image.height,
+            0,
+            0,
+            image.width,
+            image.height,
+            false
+        )
+
+        val binaryBmp = BinaryBitmap(HybridBinarizer(source))
+        val multiFormatReader = MultiFormatReader()
+        multiFormatReader.setHints ( mapOf(
+            DecodeHintType.POSSIBLE_FORMATS to arrayListOf(BarcodeFormat.QR_CODE)
+        )
+        )
+
+        try {
+            val result = multiFormatReader.decode(binaryBmp)
+            urlCallback(result.text)
+
+        } catch (e: Exception) {
+
+        } finally {
+            image.close()
         }
     }
-    //anaylze function ends here
-    private fun ByteBuffer.toByteArray(): ByteArray {
-        rewind()
-        return ByteArray(remaining()).also {
-            get(it)
-        }
-    }
+}
+
+private fun ByteBuffer.toByteArray(): ByteArray {
+    val byteArray = ByteArray(remaining())
+    get(byteArray)
+    return byteArray
 }
