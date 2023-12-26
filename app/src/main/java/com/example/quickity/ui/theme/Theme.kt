@@ -77,20 +77,20 @@ fun QuickityTheme(
     }
     val view = LocalView.current
 
-    if(useSystemUiController) {
+    /*if(useSystemUiController) {
         val systemUiController = rememberSystemUiController()
         systemUiController.setSystemBarsColor(
             color = colorScheme.primary
         )
-    }
+    }*/
 
-    /*if (!view.isInEditMode) {
+    if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
             window.statusBarColor = Color.White.toArgb()
             WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
         }
-    }*/
+    }
 
     MaterialTheme(
         colorScheme = colorScheme,

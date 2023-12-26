@@ -1,6 +1,5 @@
 package com.example.quickity.models
 
-/*
 //This contains the data class
 import android.os.Parcelable
 import androidx.annotation.NonNull
@@ -29,4 +28,3 @@ data class Employee(
     @ColumnInfo(name = "designation")
     var employeeDesignation: String,
 ) : Parcelable
-*/

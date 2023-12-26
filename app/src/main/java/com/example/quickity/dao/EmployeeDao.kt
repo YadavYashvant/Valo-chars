@@ -1,6 +1,5 @@
 package com.example.quickity.dao
 
-/*
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -26,4 +25,4 @@ interface EmployeeDao {
 
     @Delete
     suspend fun deleteEmployee(employee: Employee)
-}*/
+}
