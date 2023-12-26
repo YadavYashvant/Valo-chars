@@ -1,4 +1,4 @@
-package vtsen.hashnode.dev.qrcodescanner
+package com.example.quickity
 
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageProxy
@@ -27,8 +27,8 @@ class QRCodeAnalyzer(
         val binaryBmp = BinaryBitmap(HybridBinarizer(source))
         val multiFormatReader = MultiFormatReader()
         multiFormatReader.setHints ( mapOf(
-            DecodeHintType.POSSIBLE_FORMATS to arrayListOf(BarcodeFormat.QR_CODE)
-        )
+                DecodeHintType.POSSIBLE_FORMATS to arrayListOf(BarcodeFormat.QR_CODE)
+            )
         )
 
         try {

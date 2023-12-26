@@ -9,7 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
-import vtsen.hashnode.dev.qrcodescanner.QRCodeAnalyzer
+import com.example.quickity.QRCodeAnalyzer
 
 @Composable
 fun CameraPreview(urlCallback: (String) -> Unit) {
@@ -44,3 +44,4 @@ fun CameraPreview(urlCallback: (String) -> Unit) {
         }
     )
 }
+

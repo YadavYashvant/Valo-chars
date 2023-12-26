@@ -1,4 +1,4 @@
-package com.example.quickity.ui.screens.dialogs
+package com.example.quickity.ui.screens
 
 import android.content.Context
 import android.content.pm.PackageManager
@@ -55,4 +55,5 @@ fun isPermissionGranted(context: Context, permission: String) : Boolean {
         permission
     ) == PackageManager.PERMISSION_GRANTED
 }
+
 

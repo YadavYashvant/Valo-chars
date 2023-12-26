@@ -56,7 +56,6 @@ import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.example.quickity.R
-import com.example.quickity.ui.screens.dialogs.PermissionRequestDialog
 import com.google.accompanist.systemuicontroller.SystemUiController
 import java.util.jar.Manifest
 
