@@ -73,7 +73,7 @@ fun QRCodeScannerScreen(urlText: String, onUrlTextUpdate: (String) -> Unit) {
     }
 }
 
-private fun launchUrl(context: Context, urlText: String) {
+fun launchUrl(context: Context, urlText: String) {
     val uri: Uri = Uri.parse(urlText)
 
     val intent = Intent(Intent.ACTION_VIEW, uri).apply {

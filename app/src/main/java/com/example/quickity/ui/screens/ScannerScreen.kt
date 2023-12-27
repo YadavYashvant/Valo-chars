@@ -66,8 +66,8 @@ import java.util.jar.Manifest
 fun ScannerScreen(
     navController: NavController,
     useSystemUiController: Boolean = true,
-    /*urlText:String,
-    onUrlTextUpdate: (String) -> Unit*/
+    urlText:String,
+    onUrlTextUpdate: (String) -> Unit
 ) {
     var statusText by remember { mutableStateOf("") }
     val context = LocalContext.current
@@ -75,13 +75,14 @@ fun ScannerScreen(
     Box(
         modifier = Modifier.fillMaxSize().background(color = blackV)
     ) {
-        AnimatedPreloaderScan(modifier = Modifier
-            .size(500.dp)
-            .padding(16.dp)
+        AnimatedPreloaderScan(
+            modifier = Modifier
+                .size(500.dp)
+                .padding(16.dp)
         )
     }
 
-    /*PermissionRequestDialog(
+    PermissionRequestDialog(
         permission = android.Manifest.permission.CAMERA,
         onResult = { isGranted ->
             statusText = if (isGranted) {
@@ -90,31 +91,28 @@ fun ScannerScreen(
                 "No camera permission!"
             }
         },
-    )*/
+    )
 
-    /*Column(
+    Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(horizontal = 10.dp)
-            .verticalScroll(rememberScrollState())
-        ,
+            .verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text=statusText, fontWeight = FontWeight.SemiBold, fontSize = 30.sp)
+        Text(text = statusText, fontWeight = FontWeight.SemiBold, fontSize = 30.sp)
 
         Spacer(modifier = Modifier.height(5.dp))
 
-        AnimatedPreloaderScan(Modifier.fillMaxHeight())
-*/
-        /*CameraPreview { url ->
+        CameraPreview { url ->
             onUrlTextUpdate(url)
         }
         OutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
             value = urlText,
             onValueChange = {},
-            label = {Text("Detected URL")},
+            label = { Text("Detected URL") },
             readOnly = true,
         )
 
@@ -125,30 +123,30 @@ fun ScannerScreen(
                 launchUrl(context, urlText)
             }
         ) {
-            Text(text="Launch", fontWeight = FontWeight.SemiBold, fontSize = 30.sp)
-        }*/
+            Text(text = "Launch", fontWeight = FontWeight.SemiBold, fontSize = 30.sp)
+        }
 
-}
-
-
-private fun launchUrl(context: Context, urlText: String) {
-    val uri: Uri = Uri.parse(urlText)
-
-    val intent = Intent(Intent.ACTION_VIEW, uri).apply {
-        setPackage("com.android.chrome")
     }
 
-    try {
-        context.startActivity(intent)
+    fun launchUrl(context: Context, urlText: String) {
+        val uri: Uri = Uri.parse(urlText)
 
-    } catch (e: ActivityNotFoundException) {
-        intent.setPackage(null)
+        val intent = Intent(Intent.ACTION_VIEW, uri).apply {
+            setPackage("com.android.chrome")
+        }
 
         try {
             context.startActivity(intent)
 
         } catch (e: ActivityNotFoundException) {
+            intent.setPackage(null)
 
+            try {
+                context.startActivity(intent)
+
+            } catch (e: ActivityNotFoundException) {
+
+            }
         }
     }
 }

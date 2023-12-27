@@ -1,22 +1,18 @@
 package com.example.quickity.api_feature.ui.navigation
 
-import androidx.compose.foundation.background
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.quickity.animations.EnterAnimation
 import com.example.quickity.api_feature.ui.screen.detail.DetailAgents
 import com.example.quickity.api_feature.ui.screen.detail.DetailWeapon
 import com.example.quickity.api_feature.viewmodel.HomeViewModel
 import com.example.quickity.ui.screens.BillScreen
 import com.example.quickity.ui.screens.HomeScreen
 import com.example.quickity.ui.screens.ScannerScreen
-import com.example.quickity.ui.theme.blueV
+import com.example.quickity.urlText
 
 @Composable
 fun Navigation(navController: NavHostController) {
@@ -36,10 +32,10 @@ fun Navigation(navController: NavHostController) {
         composable("Scan") {
                 ScannerScreen(
                     navController = navController,
-                    //urlText = urlText,
-                    /*onUrlTextUpdate = {
+                    urlText = urlText,
+                    onUrlTextUpdate = {
                         urlText = it
-                    },*/
+                    },
                 )
         }
         composable("Bills") {
@@ -54,8 +50,3 @@ fun Navigation(navController: NavHostController) {
     }
 }
 
-@Composable
-fun HolderNavigation() {
-    val navController = rememberNavController()
-
-}
