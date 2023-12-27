@@ -76,9 +76,9 @@ class MainActivity : ComponentActivity() {
                                 .padding(start = 130.dp),
                                 color = Color(0xFF1E90FF)
                             ) },
-                            navigationIcon = {
+                            /*navigationIcon = {
                                 Icon(painter = painterResource(id = R.drawable.quickity_navicon), contentDescription = null)
-                            },
+                            },*/
                             actions = {
                                 IconButton(onClick = { mOpenMenu = !mOpenMenu }) {
                                     Icon(Icons.Default.MoreVert, "",
