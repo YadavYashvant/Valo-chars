@@ -339,9 +339,7 @@ fun AbilitiesList(dataItems: DataItem) {
             )
         }
     }
-
 }
-
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
