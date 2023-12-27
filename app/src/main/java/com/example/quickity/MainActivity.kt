@@ -38,6 +38,7 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -45,6 +46,7 @@ import com.example.quickity.animations.EnterAnimation
 import com.example.quickity.api_feature.ui.navigation.Navigation
 import com.example.quickity.ui.BottomNavigation
 import com.example.quickity.ui.screens.BillScreen
+import com.example.quickity.ui.screens.HolderScreen
 import com.example.quickity.ui.screens.HomeScreen
 import com.example.quickity.ui.screens.ScannerScreen
 import com.example.quickity.ui.theme.QuickityTheme
@@ -66,8 +68,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-
-                    Navigation()
+                    val navController: NavHostController = rememberNavController()
+                    HolderScreen(navController = navController)
 
                     /*val navController = rememberNavController()
                     var mOpenMenu by remember { mutableStateOf(false) }

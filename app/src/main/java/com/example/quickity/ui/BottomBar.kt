@@ -30,6 +30,7 @@ import androidx.navigation.NavHostController
 import com.example.quickity.R
 import com.example.quickity.ui.theme.blackV
 import com.example.quickity.ui.theme.redV
+import com.example.quickity.ui.theme.tungstenFont
 
 
 data class BottomNavigationItem(
@@ -51,6 +52,7 @@ fun BottomNavigation(
             selectedIcon = painterResource(id = R.drawable.home_filled),
             unselectedIcon = painterResource(id = R.drawable.outline_home_24),
             hasNews = false,
+
         ),
         BottomNavigationItem(
             title = "Scan",
@@ -89,7 +91,7 @@ fun BottomNavigation(
                     // navController.navigate(item.title)
                 },
                 label = {
-                    Text(text = item.title, color = redV)
+                    Text(text = item.title, color = redV, fontFamily = tungstenFont)
                 },
                 alwaysShowLabel = false,
                 icon = {

@@ -58,7 +58,7 @@ fun HomeScreen(viewModel: HomeViewModel, navHostController: NavHostController){
         ),
             title = {
                 Text(
-                    "VALORANT",
+                    "QUICKITY",
                     style = TextStyle(
                         fontFamily = valorantFont,
                         color = Color.White,
@@ -67,9 +67,9 @@ fun HomeScreen(viewModel: HomeViewModel, navHostController: NavHostController){
                 )
             })
     },
-        bottomBar = {
+/*        bottomBar = {
             BottomNavigation(navController = navHostController)
-        }
+        }*/
         ) {
         TabScreen(modifier = Modifier.padding(it), navHostController, viewModel)
     }

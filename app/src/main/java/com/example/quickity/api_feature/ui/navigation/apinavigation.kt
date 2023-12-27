@@ -53,3 +53,9 @@ fun Navigation() {
         }
     }
 }
+
+@Composable
+fun HolderNavigation() {
+    val navController = rememberNavController()
+
+}
