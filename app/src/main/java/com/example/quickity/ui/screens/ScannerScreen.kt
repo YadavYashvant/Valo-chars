@@ -105,9 +105,14 @@ fun ScannerScreen(
 
         Spacer(modifier = Modifier.height(5.dp))
 
-        CameraPreview { url ->
-            onUrlTextUpdate(url)
+        Card(
+            modifier = Modifier.padding(horizontal = 16.dp)
+        ) {
+            CameraPreview { url ->
+                onUrlTextUpdate(url)
+            }
         }
+
         OutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
             value = urlText,
