@@ -1,4 +1,11 @@
 package com.example.quickity.api_feature.Network
 
-class ApiService {
+import com.example.quickity.api_feature.apidata.Agents
+import retrofit2.Call
+import retrofit2.http.GET
+
+interface ApiService {
+
+    @GET("agents")
+    fun getAllAgents() : Call<Agents>
 }
