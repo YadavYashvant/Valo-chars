@@ -3,12 +3,13 @@ package com.example.quickity.api_feature.apidata
 import kotlinx.parcelize.Parcelize
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.RawValue
 
 @Parcelize
 data class Agents(
 
 	@field:SerializedName("data")
-	val data: List<DataItem?>? = null,
+	val data: List<DataItem>? = null,
 
 	@field:SerializedName("status")
 	val status: Int? = null
@@ -40,6 +41,32 @@ data class RecruitmentData(
 ) : Parcelable
 
 @Parcelize
+data class MediaListItem(
+
+	@field:SerializedName("id")
+	val id: Int? = null,
+
+	@field:SerializedName("wave")
+	val wave: String? = null,
+
+	@field:SerializedName("wwise")
+	val wwise: String? = null
+) : Parcelable
+
+@Parcelize
+data class VoiceLine(
+
+	@field:SerializedName("minDuration")
+	val minDuration: @RawValue Any? = null,
+
+	@field:SerializedName("mediaList")
+	val mediaList: List<MediaListItem?>? = null,
+
+	@field:SerializedName("maxDuration")
+	val maxDuration: @RawValue Any? = null
+) : Parcelable
+
+@Parcelize
 data class AbilitiesItem(
 
 	@field:SerializedName("displayIcon")
@@ -53,25 +80,6 @@ data class AbilitiesItem(
 
 	@field:SerializedName("slot")
 	val slot: String? = null
-) : Parcelable
-
-@Parcelize
-data class Role(
-
-	@field:SerializedName("displayIcon")
-	val displayIcon: String? = null,
-
-	@field:SerializedName("displayName")
-	val displayName: String? = null,
-
-	@field:SerializedName("assetPath")
-	val assetPath: String? = null,
-
-	@field:SerializedName("description")
-	val description: String? = null,
-
-	@field:SerializedName("uuid")
-	val uuid: String? = null
 ) : Parcelable
 
 @Parcelize
@@ -105,7 +113,7 @@ data class DataItem(
 	val uuid: String? = null,
 
 	@field:SerializedName("characterTags")
-	val characterTags: String? = null,               //
+	val characterTags: @RawValue Any? = null,
 
 	@field:SerializedName("displayIconSmall")
 	val displayIconSmall: String? = null,
@@ -123,7 +131,7 @@ data class DataItem(
 	val displayIcon: String? = null,
 
 	@field:SerializedName("recruitmentData")
-	val recruitmentData: String? = null,             //
+	val recruitmentData: @RawValue Any? = null,
 
 	@field:SerializedName("bustPortrait")
 	val bustPortrait: String? = null,
@@ -135,11 +143,30 @@ data class DataItem(
 	val assetPath: String? = null,
 
 	@field:SerializedName("voiceLine")
-	val voiceLine: String? = null,                    //
+	val voiceLine: VoiceLine? = null,
 
 	@field:SerializedName("isPlayableCharacter")
 	val isPlayableCharacter: Boolean? = null,
 
 	@field:SerializedName("developerName")
 	val developerName: String? = null
+) : Parcelable
+
+@Parcelize
+data class Role(
+
+	@field:SerializedName("displayIcon")
+	val displayIcon: String? = null,
+
+	@field:SerializedName("displayName")
+	val displayName: String? = null,
+
+	@field:SerializedName("assetPath")
+	val assetPath: String? = null,
+
+	@field:SerializedName("description")
+	val description: String? = null,
+
+	@field:SerializedName("uuid")
+	val uuid: String? = null
 ) : Parcelable

@@ -2,9 +2,19 @@ package com.example.quickity.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import com.example.quickity.R
+
+val valorantFont = FontFamily(
+    Font(R.font.valorant, FontWeight.Normal),
+)
+
+val tungstenFont = FontFamily(
+    Font(R.font.tungsten, FontWeight.Normal)
+)
 
 // Set of Material typography styles to start with
 val Typography = Typography(

@@ -1,4 +1,5 @@
 package com.example.quickity.ui
+import androidx.compose.foundation.background
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Email
@@ -18,13 +19,17 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import com.example.quickity.R
+import com.example.quickity.ui.theme.blackV
+import com.example.quickity.ui.theme.redV
 
 
 data class BottomNavigationItem(
@@ -38,7 +43,7 @@ data class BottomNavigationItem(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BottomNavigation(
-    navController: NavController
+    navController: NavHostController
 ){
     val items = listOf(
         BottomNavigationItem(
@@ -72,7 +77,9 @@ fun BottomNavigation(
         mutableStateOf(0)
     }
 
-    NavigationBar {
+    NavigationBar(
+        containerColor = blackV
+    ) {
         items.forEachIndexed { index, item ->
             NavigationBarItem(
                 selected = selectedItemIndex == index,
@@ -82,7 +89,7 @@ fun BottomNavigation(
                     // navController.navigate(item.title)
                 },
                 label = {
-                    Text(text = item.title)
+                    Text(text = item.title, color = redV)
                 },
                 alwaysShowLabel = false,
                 icon = {
@@ -90,7 +97,8 @@ fun BottomNavigation(
                         painter = if (index == selectedItemIndex) {
                             item.selectedIcon
                         } else item.unselectedIcon,
-                        contentDescription = item.title
+                        contentDescription = item.title,
+                        tint = redV
                     )
 
                 })

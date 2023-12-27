@@ -65,8 +65,8 @@ import java.util.jar.Manifest
 fun ScannerScreen(
     navController: NavController,
     useSystemUiController: Boolean = true,
-    urlText:String,
-    onUrlTextUpdate: (String) -> Unit
+    /*urlText:String,
+    onUrlTextUpdate: (String) -> Unit*/
 ) {
     var statusText by remember { mutableStateOf("") }
     val context = LocalContext.current
@@ -94,7 +94,10 @@ fun ScannerScreen(
         Text(text=statusText, fontWeight = FontWeight.SemiBold, fontSize = 30.sp)
 
         Spacer(modifier = Modifier.height(5.dp))
-        CameraPreview { url ->
+
+        AnimatedPreloaderScan(Modifier.fillMaxHeight())
+
+        /*CameraPreview { url ->
             onUrlTextUpdate(url)
         }
         OutlinedTextField(
@@ -113,7 +116,7 @@ fun ScannerScreen(
             }
         ) {
             Text(text="Launch", fontWeight = FontWeight.SemiBold, fontSize = 30.sp)
-        }
+        }*/
     }
 }
 

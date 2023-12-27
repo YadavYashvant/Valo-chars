@@ -58,6 +58,11 @@ fun QuickityTheme(content: @Composable () -> Unit) {
         content = content
     )
 }*/
+
+val blackV = Color(0XFF0F1923)
+val redV = Color(0xFFF54452)
+val blueV = Color(0XFF1F2731)
+
 @Composable
 fun QuickityTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
@@ -87,7 +92,7 @@ fun QuickityTheme(
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
-            window.statusBarColor = Color.White.toArgb()
+            window.statusBarColor = blackV.toArgb()
             WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
         }
     }

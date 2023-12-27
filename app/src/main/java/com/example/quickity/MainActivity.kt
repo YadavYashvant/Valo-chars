@@ -42,6 +42,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.quickity.animations.EnterAnimation
+import com.example.quickity.api_feature.ui.navigation.Navigation
 import com.example.quickity.ui.BottomNavigation
 import com.example.quickity.ui.screens.BillScreen
 import com.example.quickity.ui.screens.HomeScreen
@@ -65,7 +66,10 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    val navController = rememberNavController()
+
+                    Navigation()
+
+                    /*val navController = rememberNavController()
                     var mOpenMenu by remember { mutableStateOf(false) }
                     val mContext = LocalContext.current
 
@@ -76,9 +80,9 @@ class MainActivity : ComponentActivity() {
                                 .padding(start = 130.dp),
                                 color = Color(0xFF1E90FF)
                             ) },
-                            /*navigationIcon = {
+                            *//*navigationIcon = {
                                 Icon(painter = painterResource(id = R.drawable.quickity_navicon), contentDescription = null)
-                            },*/
+                            },*//*
                             actions = {
                                 IconButton(onClick = { mOpenMenu = !mOpenMenu }) {
                                     Icon(Icons.Default.MoreVert, "",
@@ -178,7 +182,8 @@ class MainActivity : ComponentActivity() {
                             composable("Home") {
                                 EnterAnimation {
                                     HomeScreen(
-                                        navController = navController
+                                        navController = navController,
+
                                     )
                                 }
                             }
@@ -199,7 +204,7 @@ class MainActivity : ComponentActivity() {
                                 }
                             }
                         }
-                    }
+                    }*/
                 }
             }
         }
