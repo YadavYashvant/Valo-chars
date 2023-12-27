@@ -1,6 +1,8 @@
 package com.example.quickity.ui.screens
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
@@ -17,13 +19,14 @@ import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.example.quickity.R
+import com.example.quickity.ui.theme.blackV
 
 @Composable
 fun BillScreen(
     navController: NavController
 ) {
     Box(
-        modifier = Modifier.padding(16.dp),
+        modifier = Modifier.background(color = blackV).fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
         //Text(text = "Bills", modifier = Modifier.padding(16.dp).align(Alignment.Center), fontSize = 24.sp)

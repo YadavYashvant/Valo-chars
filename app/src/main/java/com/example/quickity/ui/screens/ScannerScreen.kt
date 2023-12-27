@@ -56,6 +56,7 @@ import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.example.quickity.R
+import com.example.quickity.ui.theme.blackV
 import com.google.accompanist.systemuicontroller.SystemUiController
 import java.util.jar.Manifest
 
@@ -71,7 +72,16 @@ fun ScannerScreen(
     var statusText by remember { mutableStateOf("") }
     val context = LocalContext.current
 
-    PermissionRequestDialog(
+    Box(
+        modifier = Modifier.fillMaxSize().background(color = blackV)
+    ) {
+        AnimatedPreloaderScan(modifier = Modifier
+            .size(500.dp)
+            .padding(16.dp)
+        )
+    }
+
+    /*PermissionRequestDialog(
         permission = android.Manifest.permission.CAMERA,
         onResult = { isGranted ->
             statusText = if (isGranted) {
@@ -80,9 +90,9 @@ fun ScannerScreen(
                 "No camera permission!"
             }
         },
-    )
+    )*/
 
-    Column(
+    /*Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(horizontal = 10.dp)
@@ -96,7 +106,7 @@ fun ScannerScreen(
         Spacer(modifier = Modifier.height(5.dp))
 
         AnimatedPreloaderScan(Modifier.fillMaxHeight())
-
+*/
         /*CameraPreview { url ->
             onUrlTextUpdate(url)
         }
@@ -117,7 +127,7 @@ fun ScannerScreen(
         ) {
             Text(text="Launch", fontWeight = FontWeight.SemiBold, fontSize = 30.sp)
         }*/
-    }
+
 }
 
 
