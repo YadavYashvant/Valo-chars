@@ -91,8 +91,6 @@ fun AgentsHeader(
                 Box(
                     Modifier
                         .background(blackV)
-
-
                 ) {
 
                     Column(Modifier.height(this@BoxWithConstraints.maxHeight)) {

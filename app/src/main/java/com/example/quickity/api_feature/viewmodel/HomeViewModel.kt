@@ -58,7 +58,6 @@ class HomeViewModel : ViewModel() {
         }
     }
 
-
     private fun retrieveAgentsData(){
         viewModelScope.launch {
             loading = true
