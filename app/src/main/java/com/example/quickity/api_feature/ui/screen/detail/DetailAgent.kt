@@ -349,7 +349,5 @@ fun DetailAgents(viewModel: HomeViewModel, navHostController: NavHostController)
     })
     VerticalPager(state = pagerState) {
         AgentsHeader(viewModel = viewModel, it, pagerState, navHostController)
-
-
     }
 }
