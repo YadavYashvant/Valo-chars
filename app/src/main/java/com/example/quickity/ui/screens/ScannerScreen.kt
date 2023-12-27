@@ -28,12 +28,15 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -57,6 +60,8 @@ import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.example.quickity.R
 import com.example.quickity.ui.theme.blackV
+import com.example.quickity.ui.theme.blueV
+import com.example.quickity.ui.theme.valorantFont
 import com.google.accompanist.systemuicontroller.SystemUiController
 import java.util.jar.Manifest
 
@@ -82,7 +87,7 @@ fun ScannerScreen(
         )
     }*/
 
-    PermissionRequestDialog(
+    /*PermissionRequestDialog(
         permission = android.Manifest.permission.CAMERA,
         onResult = { isGranted ->
             statusText = if (isGranted) {
@@ -91,7 +96,7 @@ fun ScannerScreen(
                 "No camera permission!"
             }
         },
-    )
+    )*/
 
     Column(
         modifier = Modifier
@@ -114,21 +119,34 @@ fun ScannerScreen(
         }
 
         OutlinedTextField(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp),
             value = urlText,
+            colors = TextFieldDefaults.textFieldColors(
+
+                containerColor = blackV
+            ),
             onValueChange = {},
-            label = { Text("Detected URL") },
+            shape = RoundedCornerShape(20.dp),
+            label = { Text("Detected URL", fontFamily = valorantFont) },
             readOnly = true,
         )
 
         Spacer(modifier = Modifier.height(5.dp))
         Button(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 32.dp, vertical = 32.dp)
+                .height(50.dp),
             onClick = {
                 launchUrl(context, urlText)
-            }
+            },
+            colors = ButtonDefaults.buttonColors(
+                containerColor = blueV
+            )
         ) {
-            Text(text = "Launch", fontWeight = FontWeight.SemiBold, fontSize = 30.sp)
+            Text(text = "Launch", fontWeight = FontWeight.SemiBold, fontSize = 30.sp,fontFamily = valorantFont,)
         }
 
     }
