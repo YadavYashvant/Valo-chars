@@ -2,6 +2,8 @@ package com.example.quickity.api_feature.ui.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -14,8 +16,8 @@ import com.example.quickity.ui.screens.HomeScreen
 import com.example.quickity.ui.screens.ScannerScreen
 
 @Composable
-fun Navigation() {
-    val navController = rememberNavController()
+fun Navigation(navController: NavHostController) {
+    //val navController = rememberNavController()
     val viewModel: HomeViewModel = viewModel()
     NavHost(
         navController = navController,

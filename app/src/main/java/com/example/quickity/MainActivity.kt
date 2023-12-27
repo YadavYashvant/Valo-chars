@@ -68,8 +68,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    val navController: NavHostController = rememberNavController()
-                    HolderScreen(navController = navController)
+
+                    HolderScreen()
 
                     /*val navController = rememberNavController()
                     var mOpenMenu by remember { mutableStateOf(false) }
