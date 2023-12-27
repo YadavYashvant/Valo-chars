@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentWidth
@@ -50,6 +52,7 @@ import com.example.quickity.ui.screens.HolderScreen
 import com.example.quickity.ui.screens.HomeScreen
 import com.example.quickity.ui.screens.ScannerScreen
 import com.example.quickity.ui.theme.QuickityTheme
+import com.example.quickity.ui.theme.blackV
 
 const val URL_KEY: String = "UrlKey"
 
@@ -66,10 +69,15 @@ class MainActivity : ComponentActivity() {
             QuickityTheme{
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    color = MaterialTheme.colorScheme.background,
+
                 ) {
 
-                    HolderScreen()
+                    Box(
+                        modifier = Modifier.fillMaxSize().background(color = blackV)
+                    ) {
+                        HolderScreen()
+                    }
 
                     /*val navController = rememberNavController()
                     var mOpenMenu by remember { mutableStateOf(false) }

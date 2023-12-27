@@ -60,7 +60,7 @@ data class VoiceLine(
 	val minDuration: @RawValue Any? = null,
 
 	@field:SerializedName("mediaList")
-	val mediaList: List<MediaListItem?>? = null,
+	val mediaList: List<MediaListItem>? = null,
 
 	@field:SerializedName("maxDuration")
 	val maxDuration: @RawValue Any? = null
@@ -143,7 +143,7 @@ data class DataItem(
 	val assetPath: String? = null,
 
 	@field:SerializedName("voiceLine")
-	val voiceLine: VoiceLine? = null,
+	val voiceLine: @RawValue Any? = null,
 
 	@field:SerializedName("isPlayableCharacter")
 	val isPlayableCharacter: Boolean? = null,

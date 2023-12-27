@@ -117,6 +117,7 @@ fun AgentsList(navHostController: NavHostController, viewModel: HomeViewModel) {
         modifier = Modifier
             .background(blackV)
             .fillMaxSize()
+            .padding(horizontal = 16.dp)
     ) {
         items(count = agentsData.value.size) {
             AgentsCard(agentsData.value[it], navHostController, viewModel)

@@ -107,6 +107,7 @@ fun WeaponsList(navHostController: NavHostController, viewModel: HomeViewModel) 
         modifier = Modifier
             .background(blackV)
             .fillMaxSize()
+            .padding(horizontal = 16.dp)
     ) {
         items(count = weaponsData.value.size) {
             WeaponCards(weaponsData.value[it], navHostController, viewModel)

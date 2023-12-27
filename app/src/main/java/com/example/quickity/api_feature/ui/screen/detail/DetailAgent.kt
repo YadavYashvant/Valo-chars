@@ -82,8 +82,8 @@ fun AgentsHeader(
 ) {
     val data = viewModel.selectedAgents
     val mContext = LocalContext.current
-    val mMediaPlayer =
-        MediaPlayer.create(mContext, Uri.parse(data?.voiceLine?.mediaList?.get(0)?.wave))
+    //val audioattr = Uri.parse(data?.voiceLine?.medialist?.get(0)?.wave)
+    //val mMediaPlayer = MediaPlayer.create(mContext, audioattr)
 
     when (pagerIndex) {
         0 -> {
@@ -245,7 +245,7 @@ fun AgentsHeader(
                                 .align(Alignment.Center)
                         )
                         IconButton(
-                            onClick = { mMediaPlayer.start() }, modifier = Modifier.align(
+                            onClick = { /*mMediaPlayer.start()*/ }, modifier = Modifier.align(
                                 Alignment.Center
                             )
                         ) {

@@ -1,6 +1,8 @@
 package com.example.quickity.api_feature.ui.navigation
 
+import androidx.compose.foundation.background
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
@@ -14,6 +16,7 @@ import com.example.quickity.api_feature.viewmodel.HomeViewModel
 import com.example.quickity.ui.screens.BillScreen
 import com.example.quickity.ui.screens.HomeScreen
 import com.example.quickity.ui.screens.ScannerScreen
+import com.example.quickity.ui.theme.blueV
 
 @Composable
 fun Navigation(navController: NavHostController) {
@@ -21,18 +24,16 @@ fun Navigation(navController: NavHostController) {
     val viewModel: HomeViewModel = viewModel()
     NavHost(
         navController = navController,
-        startDestination = "home"
+        startDestination = "home",
+
     ) {
         composable("Home") {
-            EnterAnimation {
                 HomeScreen(
                     navHostController = navController,
                     viewModel = viewModel
                     )
-            }
         }
         composable("Scan") {
-            EnterAnimation {
                 ScannerScreen(
                     navController = navController,
                     //urlText = urlText,
@@ -40,12 +41,9 @@ fun Navigation(navController: NavHostController) {
                         urlText = it
                     },*/
                 )
-            }
         }
         composable("Bills") {
-            EnterAnimation {
                 BillScreen(navController = navController)
-            }
         }
         composable("detail_agent") {
             DetailAgents(viewModel = viewModel, navHostController = navController)
