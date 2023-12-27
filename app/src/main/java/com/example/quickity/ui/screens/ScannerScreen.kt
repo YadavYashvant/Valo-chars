@@ -72,7 +72,7 @@ fun ScannerScreen(
     var statusText by remember { mutableStateOf("") }
     val context = LocalContext.current
 
-    Box(
+    /*Box(
         modifier = Modifier.fillMaxSize().background(color = blackV)
     ) {
         AnimatedPreloaderScan(
@@ -80,7 +80,7 @@ fun ScannerScreen(
                 .size(500.dp)
                 .padding(16.dp)
         )
-    }
+    }*/
 
     PermissionRequestDialog(
         permission = android.Manifest.permission.CAMERA,
@@ -96,7 +96,7 @@ fun ScannerScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(horizontal = 10.dp)
+            .background(color = blackV)
             .verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
