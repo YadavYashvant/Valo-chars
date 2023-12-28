@@ -80,7 +80,7 @@ fun AgentsHeader(
     val mContext = LocalContext.current
     //val audioattr = Uri.parse(data?.voiceLine?.medialist?.get(0)?.wave)
     //val mMediaPlayer = MediaPlayer.create(mContext, audioattr)
-    val mediaPlayer = MediaPlayer.create(mContext, R.raw.demonw)
+    val mediaPlayer = MediaPlayer.create(mContext, R.raw.demonw) // random noise of meow meow 🐈
     var isPlaying by remember{ mutableStateOf(false) }
     mediaPlayer.setOnCompletionListener {
         isPlaying = false
