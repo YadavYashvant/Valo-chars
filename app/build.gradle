@@ -105,7 +105,7 @@ dependencies {
     implementation "androidx.camera:camera-view:$camerax_version"
 
     // Zxing
-    implementation 'com.google.zxing:core:3.3.3'
+    implementation 'com.google.zxing:core:3.5.1'
 
     //Retrofit
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")

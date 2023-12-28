@@ -27,6 +27,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -106,7 +107,11 @@ fun ScannerScreen(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = statusText, fontWeight = FontWeight.SemiBold, fontSize = 30.sp)
+        Text(text = statusText, fontWeight = FontWeight.SemiBold, fontSize = 20.sp)
+
+        AnimatedPreloaderScan(
+            modifier = Modifier.height(80.dp).fillMaxWidth()
+        )
 
         Spacer(modifier = Modifier.height(5.dp))
 
@@ -138,6 +143,7 @@ fun ScannerScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 32.dp, vertical = 32.dp)
+                .padding(bottom = 16.dp)
                 .height(50.dp),
             onClick = {
                 launchUrl(context, urlText)
@@ -148,29 +154,6 @@ fun ScannerScreen(
         ) {
             Text(text = "Launch", fontWeight = FontWeight.SemiBold, fontSize = 30.sp,fontFamily = valorantFont,)
         }
-
-    }
-
-    fun launchUrl(context: Context, urlText: String) {
-        val uri: Uri = Uri.parse(urlText)
-
-        val intent = Intent(Intent.ACTION_VIEW, uri).apply {
-            setPackage("com.android.chrome")
-        }
-
-        try {
-            context.startActivity(intent)
-
-        } catch (e: ActivityNotFoundException) {
-            intent.setPackage(null)
-
-            try {
-                context.startActivity(intent)
-
-            } catch (e: ActivityNotFoundException) {
-
-            }
-        }
     }
 }
 
@@ -178,7 +161,7 @@ fun ScannerScreen(
 fun AnimatedPreloaderScan(modifier: Modifier = Modifier) {
     val preloaderLottieComposition by rememberLottieComposition(
         LottieCompositionSpec.RawRes(
-            R.raw.scan_anim
+            R.raw.scananim1
         )
     )
 
