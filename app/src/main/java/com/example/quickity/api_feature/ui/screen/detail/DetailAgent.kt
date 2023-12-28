@@ -80,9 +80,11 @@ fun AgentsHeader(
     val mContext = LocalContext.current
     //val audioattr = Uri.parse(data?.voiceLine?.medialist?.get(0)?.wave)
     //val mMediaPlayer = MediaPlayer.create(mContext, audioattr)
-    val mediaPlayer = MediaPlayer.create(mContext, R.raw.demogym)
+    val mediaPlayer = MediaPlayer.create(mContext, R.raw.demonw)
     var isPlaying by remember{ mutableStateOf(false) }
-
+    mediaPlayer.setOnCompletionListener {
+        isPlaying = false
+    }
     when (pagerIndex) {
         0 -> {
             BoxWithConstraints() {
@@ -271,7 +273,6 @@ fun AgentsHeader(
                 }
             }
         }
-
     }
 
     DisposableEffect(Unit) {
