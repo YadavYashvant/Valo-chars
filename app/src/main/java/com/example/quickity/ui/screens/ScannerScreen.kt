@@ -78,6 +78,7 @@ fun ScannerScreen(
     var statusText by remember { mutableStateOf("") }
     val context = LocalContext.current
 
+    // Not using permission dialog
     /*PermissionRequestDialog(
         permission = android.Manifest.permission.CAMERA,
         onResult = { isGranted ->
