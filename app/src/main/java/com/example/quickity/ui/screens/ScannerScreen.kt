@@ -78,16 +78,6 @@ fun ScannerScreen(
     var statusText by remember { mutableStateOf("") }
     val context = LocalContext.current
 
-    /*Box(
-        modifier = Modifier.fillMaxSize().background(color = blackV)
-    ) {
-        AnimatedPreloaderScan(
-            modifier = Modifier
-                .size(500.dp)
-                .padding(16.dp)
-        )
-    }*/
-
     /*PermissionRequestDialog(
         permission = android.Manifest.permission.CAMERA,
         onResult = { isGranted ->
