@@ -38,7 +38,7 @@ class MainActivity : ComponentActivity() {
                     Box(
                         modifier = Modifier.fillMaxSize().background(color = blackV)
                     ) {
-                        HolderScreen()
+                        HolderScreen() //HolderScreen contains Compose navigation logic
                     }
 
                     /*val navController = rememberNavController()
